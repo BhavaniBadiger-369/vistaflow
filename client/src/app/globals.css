@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+:root {
+  --background: 247 244 236;
+  --foreground: 24 25 27;
+  --muted: 102 104 112;
+  --surface: 255 255 255;
+  --surface-alt: 239 234 224;
+  --border: 223 214 198;
+  --primary: 14 92 86;
+  --primary-foreground: 245 250 248;
+  --accent: 197 122 63;
+  --success: 29 122 80;
+  --warning: 181 109 29;
+  --danger: 185 66 66;
+  --shadow: 19 26 29;
+}
+
+@theme inline {
+  --color-background: rgb(var(--background));
+  --color-foreground: rgb(var(--foreground));
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-space-grotesk);
+}
+
+.dark {
+  --background: 16 19 24;
+  --foreground: 236 240 246;
+  --muted: 150 157 170;
+  --surface: 28 31 38;
+  --surface-alt: 35 39 47;
+  --border: 59 66 78;
+  --primary: 98 203 182;
+  --primary-foreground: 17 26 24;
+  --accent: 233 179 117;
+  --success: 79 191 132;
+  --warning: 231 179 92;
+  --danger: 236 129 129;
+  --shadow: 0 0 0;
+}
+
+* {
+  border-color: rgb(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(var(--primary), 0.16), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(var(--accent), 0.16), transparent 28%),
+    rgb(var(--background));
+  color: rgb(var(--foreground));
+  font-family: var(--font-manrope), sans-serif;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition:
+    color 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+::selection {
+  background: rgba(var(--primary), 0.22);
+}
+
+.surface-card {
+  background: rgba(var(--surface), 0.84);
+  border: 1px solid rgba(var(--border), 0.72);
+  box-shadow: 0 18px 36px rgba(var(--shadow), 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.surface-muted {
+  background: rgba(var(--surface-alt), 0.82);
+  border: 1px solid rgba(var(--border), 0.72);
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(var(--border), 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--border), 0.22) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+.text-muted {
+  color: rgb(var(--muted));
+}
+
+.shadow-soft {
+  box-shadow: 0 18px 36px rgba(var(--shadow), 0.08);
+}
