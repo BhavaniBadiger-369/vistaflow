@@ -1,0 +1,35 @@
+{
+  "name": "vistaflow",
+  "version": "1.0.0",
+  "description": "VistaFlow monorepo",
+  "private": true,
+  "scripts": {
+    "install:apps": "npm --prefix server install && npm --prefix client install",
+    "setup:env": "node -e \"const fs=require('fs'); const files=[['server/.env.example','server/.env'],['client/.env.example','client/.env.local']]; for (const [src,dest] of files){ if(!fs.existsSync(dest)){ fs.copyFileSync(src,dest); console.log('Created '+dest); } else { console.log('Keeping existing '+dest); } }\"",
+    "db:create": "mysql -u root -p -e \"CREATE DATABASE IF NOT EXISTS vistaflow;\"",
+    "db:generate": "npm --prefix server run prisma:generate",
+    "db:migrate": "npm --prefix server run prisma:migrate",
+    "db:seed": "npm --prefix server run prisma:seed",
+    "db:prepare": "npm run db:generate && npm run db:migrate && npm run db:seed",
+    "setup": "npm run setup:env && npm run db:create && npm run db:prepare",
+    "dev": "npm run setup:env && concurrently \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "start": "concurrently \"npm --prefix server run start\" \"npm --prefix client run start\"",
+    "build": "npm --prefix server run build && npm --prefix client run build",
+    "lint": "npm --prefix client run lint && npm --prefix server run typecheck",
+    "check": "npm run lint && npm run build"
+  },
+  "keywords": [
+    "vistaflow",
+    "nextjs",
+    "express",
+    "prisma",
+    "mysql"
+  ],
+  "author": "OpenAI Codex",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
