@@ -8,9 +8,9 @@ Coming soon — currently running locally
 
 Demo credentials you can use to explore different roles:
 Role                   Email                  Password
-Admin                 admin@vistaflow.com     Admin@123
-Manager               manager@vistaflow.com   Manager@123
-Member                member@vistaflow.com    Member@123
+Admin ,                admin@vistaflow.com ,    Admin@123
+Manager ,              manager@vistaflow.com,   Manager@123
+Member,                member@vistaflow.com,   Member@123
 
 What It Does
 VistaFlow models how a real organization manages work:
